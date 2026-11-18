@@ -39,20 +39,20 @@ Tip: paste SentinAI's real system prompt into `redteam/system_prompt.txt` so the
 ## Results (fill in from your runs)
 | Metric | v1 | v2 |
 |---|---|---|
-| Any-violation recall |  |  |
-| Any-violation precision |  |  |
-| Threat recall |  |  |
-| Identity-hate recall |  |  |
-| Missed violations (count) |  |  |
-| Sent to human review |  |  |
+| Any-violation recall | 62.5% | 75.0% |
+| Any-violation precision | 82.2% | 79.8% |
+| Threat recall | 44.9% | 61.2% |
+| Identity-hate recall | 43.1% | 55.4% |
+| Missed violations (count) | 75 | 50 |
+| Sent to human review | 31.8% | 22.5% |
 
 | Red-team | Baseline | Guarded |
 |---|---|---|
-| Attack success rate (30 cases) |  |  |
-| Injections flagged by model | n/a |  |
+| Attack success rate (30 cases) | 17% | 7% |
+| Injections flagged by model | n/a | 80% |
 
-**Top root causes of misses (v1):** 
-**Policy changes in v2:** 
+**Top root causes of misses (v1):** insult rules read too narrowly (political and public-figure name-calling skipped), identity hate required slurs (stereotypes missed), and calls for violence not treated as threats. About a third of misses were label noise.
+**Policy changes in v2:** insults cover public figures, groups and commenters; identity hate covers stereotypes and disgust toward groups; threats include calls for executions or violence framed as justice; crude profanity counts as obscene. severe_toxic is excluded from results (0 positive cases at the 0.5 agreement threshold).
 
 ## Honesty notes
 - Results come from a 400-message sample, not production traffic.
